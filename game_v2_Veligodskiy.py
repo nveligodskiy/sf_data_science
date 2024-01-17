@@ -10,12 +10,13 @@ def game_core_v3(number: int = 1) -> int:
     # Ваш код начинается здесь
     count = 0
     predict = np.random.randint(1, 101)
-    
+    #I choose human logic when we guess certain number, so when we need to guess something we input number,
+    #in depence if it is big or small we try to decrease or increase it in two times
     if predict>number:
         number=int(number*2)
     else:
         number=int(number/2)
-
+    #then after we doubled number we need act more carefully and perfrom summm or deduction with less amount in each stage of iteration
     if predict>number:
         number+=12
     else:
