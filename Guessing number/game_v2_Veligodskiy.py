@@ -1,5 +1,5 @@
 import numpy as np
-def game_core_v3(number: int = 1) -> int:
+def game_core_v4(number: int = 1) -> int:
     """
     Args:
         number (int, optional): Загаданное число. Defaults to 1.
@@ -8,29 +8,29 @@ def game_core_v3(number: int = 1) -> int:
         int: Число попыток
     """
     # Ваш код начинается здесь
-    count = 0
+    count = 3 #because we need take into account 3 iteration before cykle 
     predict = np.random.randint(1, 101)
     #I choose human logic when we guess certain number, so when we need to guess something we input number,
     #in depence if it is big or small we try to decrease or increase it in two times
-    if predict>number:
-        number=int(number*2)
+    if predict<number:
+        predict=int(predict*2)
     else:
-        number=int(number/2)
+        predict=int(predict/2)
     #then after we doubled number we need act more carefully and perfrom summm or deduction with less amount in each stage of iteration
-    if predict>number:
-        number+=12
+    if predict<number:
+        predict+=12
     else:
-        number=number-12
+        predict=predict-12
 
-    if predict>number:
-        number+=7
+    if predict<number:
+        predict+=7
     else:
-        number=number-7
+        predict=predict-7
     
-    if predict>number:
-        number+=3
+    if predict<number:
+        predict+=3
     else:
-        number=number-3
+        predict=predict-3
     
     while number!=predict:
         count+=1            
